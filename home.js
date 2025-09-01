@@ -4,12 +4,14 @@
 
 
 
-//by default all forms hidden using the loop
+// by default all forms hidden using the loop
 const functionBtn = document.getElementsByClassName('all-forms')
 for (const loop of functionBtn) {
   loop.style.display = 'none'
 }
 
+
+const transactionData = []
 
 //function to toggle the functions
 function togglefunc(id) {
@@ -20,14 +22,13 @@ function togglefunc(id) {
   document.getElementById(id).style.display = 'block'
 }
 
-
-function getIntValue(id)//function to get the integer value
-{
+//function to get the integer value
+function getIntValue(id) {
   return parseInt(document.getElementById(id).value);
 }
 
-function getOtherValue(id)//function to get other values
-{
+//function to get other values
+function getOtherValue(id) {
   return document.getElementById(id).value
 }
 
@@ -57,6 +58,12 @@ document.getElementById('add-money-btn').addEventListener("click",
     const newBalance = currentBalance + amount
 
     document.getElementById('current-balance').innerText = newBalance
+
+    const data = {
+      name: "Add Money",
+      date: new Date().toLocaleTimeString()
+    }
+    transactionData.push(data)
   }
 )
 
@@ -69,8 +76,7 @@ document.getElementById('withdraw-btn').addEventListener('click', function (e) {
   const validPin = 1234
 
 
-
-  if (agentNumber.length < 11) {
+  if (agentNumber.toString().length < 11) {
     alert('Please provide a valid account number')
     return;
   }
@@ -85,6 +91,12 @@ document.getElementById('withdraw-btn').addEventListener('click', function (e) {
   const newBalance = currentBalance - amount
 
   document.getElementById('current-balance').innerText = newBalance
+
+  const data = {
+    name: "Cash Out",
+    date: new Date().toLocaleTimeString()
+  }
+  transactionData.push(data)
 }
 )
 
@@ -114,22 +126,90 @@ document.getElementById('transfer-btn').addEventListener('click', function (e) {
 
   document.getElementById('current-balance').innerText = newBalance
 
-
+   const data = {
+    name: "Money transfered",
+    date: new Date().toLocaleTimeString()
+  }
+  transactionData.push(data)
 })
 
 // get bonus logic
 
 document.getElementById('bonus-btn').addEventListener('click',
-  function(e)
-  {
+  function (e) {
     e.preventDefault()
     const bonusAccountNumber = getIntValue('bns-coupon')
 
 
-    if(bonusAccountNumber.toString().length > 11)
-    {
+    if (bonusAccountNumber.toString().length > 11) {
       alert('you got 60% bonus')
       return;
+    }
+  }
+)
+
+// pay now logic
+document.getElementById('pay-now-btn').addEventListener('click',
+  function (e) {
+    e.preventDefault()
+    const pay = getOtherValue('utility')
+    const payAccountNumber = getIntValue('biller-account-number')
+    const amountToPay = getIntValue('amount-to-pay')
+    const pin = getIntValue('pay-pin-number')
+
+    const validPin = 1234
+
+
+    if (payAccountNumber.toString().length < 11) {
+      alert('Please provide a valid account number')
+      return;
+    }
+
+    if (pin != validPin) {
+      alert('invalid pin number')
+      return;
+    }
+    const currentBalance = parseInt(document.getElementById('current-balance').innerText)
+
+    const newBalance = currentBalance - amountToPay
+
+    document.getElementById('current-balance').innerText = newBalance
+
+    const data = {
+    name: "Paid",
+    date: new Date().toLocaleTimeString()
+  }
+  transactionData.push(data)
+  }
+)
+
+
+//transactions logic
+document.getElementById('transaction-function').addEventListener('click',
+  function (e) {
+    e.preventDefault()
+
+    const transactionContainer = document.getElementById('transaction-list')
+    transactionContainer.innerHTML = "";
+    for (const data of transactionData) {
+      const div = document.createElement('div')
+      div.innerHTML =/*html*/`
+        <div class="flex justify-between items-center mt-4">
+            <div class="flex">
+                <div class="rounded-full p-3 mr-2 bg-gray-200">
+                    <img src="./resources/wallet1.png" alt="">
+                </div>
+                <div class="flex flex-col">
+                    <h1>${data.name}</h1>
+                    <p>${data.date}</p>
+                </div>
+            </div>
+            <div>
+                <i class="fa-solid fa-ellipsis-vertical"></i>
+            </div>
+        </div>
+      `;
+      transactionContainer.appendChild(div)
     }
   }
 )
@@ -155,6 +235,15 @@ document.getElementById('transfer-money-function').addEventListener('click',
 
 document.getElementById('coupon-function').addEventListener('click', function () {
   togglefunc('bonus-coupon-div')
+})
+
+
+document.getElementById('pay-bill-function').addEventListener('click', function () {
+  togglefunc('pay-bill-div')
+})
+
+document.getElementById('transaction-function').addEventListener('click', function () {
+  togglefunc('transaction-div')
 })
 
 
