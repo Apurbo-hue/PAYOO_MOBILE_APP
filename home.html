@@ -44,6 +44,7 @@
 
         <!-- function start -->
         <div class="p-4 grid grid-cols-3 gap-4">
+           
             <div class="w-full min-h-20 p-3 text-center rounded-xl border border-gray-300" id="add-money-function">
                 <img class="mx-auto" src="./resources/wallet1.png" alt="failed to load">
                 <p>Add Money</p>
@@ -54,12 +55,12 @@
                 <p>Cashout</p>
             </div>
 
-            <div class="w-full min-h-20 p-3 text-center  rounded-xl border border-gray-300">
+            <div class="w-full min-h-20 p-3 text-center  rounded-xl border border-gray-300" id="transfer-money-function">
                 <img class="mx-auto" src="./resources/money1.png" alt="failed to load">
                 <p>Transfer Money</p>
             </div>
 
-            <div class="w-full min-h-20 p-3 text-center  rounded-xl border border-gray-300">
+            <div class="w-full min-h-20 p-3 text-center  rounded-xl border border-gray-300" id="coupon-function">
                 <img class="mx-auto" src="./resources/bonus1.png" alt="failed to load">
                 <p>Get Bonus</p>
             </div>
@@ -77,7 +78,7 @@
     </div>
 
     <!-- add money form -->
-    <div class="max-w-md mt-4 mx-auto p-4 rounded-2xl" id="cash-in-div">
+    <div class="all-forms max-w-md mt-4 mx-auto p-4 rounded-2xl" id="cash-in-div">
         <h1 class="font-bold">Add Money</h1>
         <form class="bg-white max-w-md mt-4 mx-auto p-4 rounded-2xl" action="">
             <div>
@@ -107,13 +108,15 @@
                     class="mt-1 mb-4 border-none bg-[#F4F5F7] w-full p-4 rounded-3xl" /><br>
             </div>
             <div>
-                <button type="button" class="btn btn-primary w-full rounded-3xl bg-[#0874F2]" id="add-money-btn">Add Money</button>
+                <button type="button" class="btn btn-primary w-full rounded-3xl bg-[#0874F2]" id="add-money-btn">Add
+                    Money</button>
             </div>
         </form>
     </div>
 
     <!-- cash out form -->
-<div class="max-w-md mt-4 mx-auto p-4 rounded-2xl" id="cash-out-div">
+    <div class="all-forms max-w-md mt-4 mx-auto p-4 rounded-2xl" id="cash-out-div">
+
         <h1 class="font-bold">Cash Out</h1>
         <form class="bg-white max-w-md mt-4 mx-auto p-4 rounded-2xl" action="">
 
@@ -135,7 +138,55 @@
                     class="mt-1 mb-4 border-none bg-[#F4F5F7] w-full p-4 rounded-3xl" /><br>
             </div>
             <div>
-                <button type="button" class="btn btn-primary w-full rounded-3xl bg-[#0874F2]" id="withdraw-btn">Withdraw Money</button>
+                <button type="button" class="btn btn-primary w-full rounded-3xl bg-[#0874F2]" id="withdraw-btn">Withdraw
+                    Money</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- transfer money form -->
+    <div class="all-forms max-w-md mt-4 mx-auto p-4 rounded-2xl" id="transfer-money-div">
+        <h1 class="font-bold">Transfer Money</h1>
+
+        <form action="" class="bg-white max-w-md mt-4 mx-auto p-4 rounded-2xl">
+            <div>
+                <label for="acnt-number" class="font-bold">User Account Number</label><br>
+                <input type="text" placeholder="Enter 11 digit account number" id="acnt-number"
+                    class="mt-1 mb-4 border-none bg-[#F4F5F7] w-full p-4 rounded-3xl" /><br>
+            </div>
+
+            <div>
+                <label for="transfer-amount" class="font-bold">Amount</label><br>
+                <input type="text" placeholder="Enter amount to withdraw" id="transfer-amount"
+                    class="mt-1 mb-4 border-none bg-[#F4F5F7] w-full p-4 rounded-3xl" /><br>
+            </div>
+
+            <div>
+                <label for="transfer-pin" class="font-bold">Pin Number</label><br>
+                <input type="text" placeholder="Enter 4 Digit Pin" id="transfer-pin"
+                    class="mt-1 mb-4 border-none bg-[#F4F5F7] w-full p-4 rounded-3xl" /><br>
+            </div>
+
+            <div>
+                <button type="button" class="btn btn-primary w-full rounded-3xl bg-[#0874F2]" id="transfer-btn">Send Now</button>
+            </div>
+        </form>
+    </div>
+
+
+    <!-- bonus coupon form -->
+     <div class="all-forms max-w-md mt-4 mx-auto p-4 rounded-2xl" id="bonus-coupon-div">
+        <h1 class="font-bold">Get Bonus</h1>
+
+        <form action="" class="bg-white max-w-md mt-4 mx-auto p-4 rounded-2xl">
+            <div>
+                <label for="bns-coupon" class="font-bold">User Account Number</label><br>
+                <input type="text" placeholder="Enter 11 digit account number" id="bns-coupon"
+                    class="mt-1 mb-4 border-none bg-[#F4F5F7] w-full p-4 rounded-3xl" /><br>
+            </div>
+
+            <div>
+                <button type="button" class="btn btn-primary w-full rounded-3xl bg-[#0874F2]" id="bonus-btn">Get Bonus</button>
             </div>
         </form>
     </div>

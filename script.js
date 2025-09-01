@@ -1,16 +1,15 @@
 document.getElementById('log-btn').addEventListener('click',
     function()
     {  
-        const mobile = document.getElementById('Mobile').value
-        const pin = document.getElementById('Pin').value
-        const intMobile = parseInt(mobile)
-        const intPin = parseInt(pin)
-        if(intMobile === 1570266586 && intPin === 1234)
+        const mobile = parseInt(document.getElementById('Mobile').value)
+        const pin = parseInt(document.getElementById('Pin').value)
+        
+        if(mobile === 1570266586 && pin === 1234)
         {
             window.location.href="./home.html"
         }
         else {
-            console.log('wrong keyword')
+            alert('Invalid Credentail')
         }
     }
 )
